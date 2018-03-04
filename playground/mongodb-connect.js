@@ -26,6 +26,21 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err,client) => {
     console.log('Unable to count todos', err);
   });
 
+  // //deleteMany
+  // db.collection('Todos').deleteMany({text: 'Eat lunch'}).then((result) => {
+  //   console.log(result);
+  // });
+
+  //deleteOne
+  // db.collection('Todos').deleteOne({text: 'Eat lunch'}).then((result) => {
+  //   console.log(result);
+  // });
+
+  //findOneAndDelete
+  db.collection('Todos').findOneAndDelete({text: 'Somethong to do'}).then((result) => {
+    console.log(JSON.stringify(result.value, undefined, 2));
+  });
+
   // db.collection('Todos').insertOne({
   //   text : 'Somethong else',
   //   completed: false

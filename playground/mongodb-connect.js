@@ -37,7 +37,19 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err,client) => {
   // });
 
   //findOneAndDelete
-  db.collection('Todos').findOneAndDelete({text: 'Somethong to do'}).then((result) => {
+  // db.collection('Todos').findOneAndDelete({text: 'Somethong to do'}).then((result) => {
+  //   console.log(JSON.stringify(result.value, undefined, 2));
+  // });
+
+  //findOneAndUpdate
+  db.collection('Users').findOneAndUpdate({_id: new ObjectID('5a9add3f2c299af1f72c4538')},
+  {
+      $set: { name: 'Ta mere'},
+      $inc: {age : +20}
+  },
+  {
+    returnOriginal: false
+  }).then((result) => {
     console.log(JSON.stringify(result.value, undefined, 2));
   });
 
